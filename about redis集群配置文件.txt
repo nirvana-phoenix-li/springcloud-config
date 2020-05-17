@@ -1,0 +1,34 @@
+e37a6584cb597e99f0b7e4178e73b06bbc25f866 127.0.0.1:7005@17005 slave 8a0d9fc43c67431673326adc190c3181ebef7f02 0 1588760022000 6 connected
+66618d33146df864655e04fc67709b36be7d8678 127.0.0.1:7004@17004 slave b3dfdeee8ad9caf3eb0d975494c38d538a844d3c 0 1588760022260 5 connected
+199be291c3c237467cdc67a1c3eb01bb76bbd512 127.0.0.1:7001@17001 master - 0 1588760023269 2 connected 5461-10922
+160b3b2309eb82d77dfa33c861ea581001bf37a1 127.0.0.1:7003@17003 slave 199be291c3c237467cdc67a1c3eb01bb76bbd512 0 1588760021000 4 connected
+8a0d9fc43c67431673326adc190c3181ebef7f02 127.0.0.1:7000@17000 myself,master - 0 1588760022000 1 connected 0-5460
+b3dfdeee8ad9caf3eb0d975494c38d538a844d3c 127.0.0.1:7002@17002 master - 0 1588760021255 3 connected 10923-16383
+
+/usr/local/redis_cluster/src/redis-cli -c -h 127.0.0.1 -p 7000 shutdown
+/usr/local/redis_cluster/src/redis-cli -c -h 127.0.0.1 -p 7001 shutdown
+/usr/local/redis_cluster/src/redis-cli -c -h 127.0.0.1 -p 7002 shutdown
+/usr/local/redis_cluster/src/redis-cli -c -h 127.0.0.1 -p 7003 shutdown
+/usr/local/redis_cluster/src/redis-cli -c -h 127.0.0.1 -p 7004 shutdown
+/usr/local/redis_cluster/src/redis-cli -c -h 127.0.0.1 -p 7005 shutdown
+
+/usr/local/redis_cluster/src/redis-server ./7000/redis.conf
+/usr/local/redis_cluster/src/redis-server ./7001/redis.conf
+/usr/local/redis_cluster/src/redis-server ./7002/redis.conf
+/usr/local/redis_cluster/src/redis-server ./7003/redis.conf
+/usr/local/redis_cluster/src/redis-server ./7004/redis.conf
+/usr/local/redis_cluster/src/redis-server ./7005/redis.conf
+
+export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+export PATH=$PATH:${JAVA_HOME}/bin
+
+
+netsh winsock reset
+
+source /etc/profile
+
+我的github账号密码
+@nirvana-phoenix-li
+147258369phoenix
+
+
